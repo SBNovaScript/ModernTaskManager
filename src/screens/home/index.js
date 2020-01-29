@@ -1,11 +1,7 @@
 import React, {Fragment} from "react";
-import {CssBaseline, Paper, Toolbar} from "@material-ui/core";
-import AppBar from "@material-ui/core/AppBar";
-import IconButton from "@material-ui/core/IconButton";
+import {CssBaseline, Paper, Toolbar, IconButton, AppBar, Typography, Grid} from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import {makeStyles} from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles(theme => ({
     heroContent: {
@@ -15,10 +11,11 @@ const useStyles = makeStyles(theme => ({
     },
     header: {
         marginBottom: theme.spacing(4)
+    },
+    toolbar: {
+        justifyContent: 'space-between'
     }
 }));
-
-
 
 const Home = () => {
     const classes = useStyles();
@@ -26,14 +23,17 @@ const Home = () => {
     const Header = () =>
         (
             <Fragment>
-                <CssBaseline />
                 <AppBar position={'sticky'} className={classes.header}>
-                    <Toolbar>
+                    <Toolbar className={classes.toolbar}>
                         <IconButton
                             color={'inherit'}
+                            edge={'start'}
                         >
                             <MenuIcon />
                         </IconButton>
+                        <Typography variant={'h4'} >
+                            {'Modern Task Manager'}
+                        </Typography>
                     </Toolbar>
                 </AppBar>
             </Fragment>
@@ -52,6 +52,7 @@ const Home = () => {
 
     return (
         <Fragment>
+            <CssBaseline />
             <Header/>
             <Body/>
         </Fragment>
