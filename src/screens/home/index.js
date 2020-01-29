@@ -23,7 +23,7 @@ const Home = () => {
     const Header = () =>
         (
             <Fragment>
-                <AppBar position={'sticky'} className={classes.header}>
+                <AppBar position={'static'} className={classes.header}>
                     <Toolbar className={classes.toolbar}>
                         <IconButton
                             color={'inherit'}
@@ -41,7 +41,7 @@ const Home = () => {
 
     const Body = () =>
         (
-            <Grid container justify={'center'} spacing={2}>
+            <Grid container justify={'center'}>
                 <Paper className={classes.heroContent}>
                     <Typography variant={'h2'} align={'center'} color={'textPrimary'} gutterBottom>
                         {'Test'}
@@ -52,7 +52,6 @@ const Home = () => {
 
     return (
         <Fragment>
-            <CssBaseline />
             <Header/>
             <Body/>
         </Fragment>

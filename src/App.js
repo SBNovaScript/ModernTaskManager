@@ -1,10 +1,13 @@
-import React from 'react';
-import './App.css';
+import React, {Fragment} from 'react';
 import Home from "./screens/home";
+import {CssBaseline} from "@material-ui/core";
 
 function App() {
   return (
-    <Home/>
+      <Fragment>
+        <CssBaseline />
+        <Home/>
+      </Fragment>
   );
 }
 
