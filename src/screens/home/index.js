@@ -42,7 +42,7 @@ const Home = () => {
             <Grid container justify={'center'}>
                 <Paper className={classes.heroContent}>
                     <Typography variant={'h2'} align={'center'} color={'textPrimary'} gutterBottom>
-                        {'Test'}
+                        {'My Tasks:'}
                     </Typography>
                 </Paper>
             </Grid>
