@@ -1,6 +1,7 @@
 import React, {Fragment} from "react";
 import {Paper, Toolbar, IconButton, AppBar, Typography, Grid, makeStyles} from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
+import MyTasks from "../my-tasks";
 
 const useStyles = makeStyles(theme => ({
     heroContent: {
