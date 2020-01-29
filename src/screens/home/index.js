@@ -2,12 +2,11 @@ import React, {Fragment} from "react";
 import {Paper, Toolbar, IconButton, AppBar, Typography, Grid, makeStyles} from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import MyTasks from "../my-tasks";
+import PageLayout from "../../components/PageLayout";
+import TaskCard from "../../components/TaskCard";
 
 const useStyles = makeStyles(theme => ({
-    heroContent: {
-        padding: theme.spacing(8, 0, 6),
-        minWidth: theme.spacing(30)
-    },
+
     header: {
         marginBottom: theme.spacing(4)
     },
@@ -40,14 +39,21 @@ const Home = () => {
 
     const Body = () =>
         (
-            <Grid container justify={'center'}>
-                <Paper className={classes.heroContent}>
+            <PageLayout>
+                <TaskCard>
                     <Typography variant={'h2'} align={'center'} color={'textPrimary'} gutterBottom>
                         {'My Tasks:'}
                     </Typography>
-                </Paper>
-            </Grid>
+                </TaskCard>
+                <TaskCard>
+                    <Typography variant={'subtitle1'}>
+                        {'Font!'}
+                    </Typography>
+                </TaskCard>
+            </PageLayout>
         );
+
+
 
     return (
         <Fragment>
