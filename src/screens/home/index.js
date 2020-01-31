@@ -58,7 +58,7 @@ const Home = () => {
     return (
         <Fragment>
             <Header/>
-            <Body/>
+            <MyTasks/>
         </Fragment>
 
     );
