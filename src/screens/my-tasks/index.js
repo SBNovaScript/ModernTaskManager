@@ -8,50 +8,34 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-const MyTasks = () => (
-    <PageLayout>
-            <Card>
-                    <CardContent>
-                            <Typography color="textSecondary" gutterBottom>
-                                    Task #1
-                            </Typography>
-                            <Typography variant="body2" component="p">
-                                    Task Description
-                            </Typography>
-                    </CardContent>
-                    <CardActions>
-                            <Button size="small">Done!</Button>
-                    </CardActions>
-            </Card>
-            <Card>
-                    <CardContent>
-                            <Typography color="textSecondary" gutterBottom>
-                                    Task #2
-                            </Typography>
-                            <Typography variant="body2" component="p">
-                                    Task Description
-                            </Typography>
-                    </CardContent>
-                    <CardActions>
-                            <Button size="small">Done!</Button>
-                    </CardActions>
-            </Card>
-            <Card>
-                    <CardContent>
-                            <Typography color="textSecondary" gutterBottom>
-                                    Task #3
-                            </Typography>
-                            <Typography variant="body2" component="p">
-                                    Task Description
-                            </Typography>
-                    </CardContent>
-                    <CardActions>
-                            <Button size="small">Done!</Button>
-                    </CardActions>
-            </Card>
-    </PageLayout>
+const MyTasks = () => {
+
+        const Task = () =>
+            (
+                <Card>
+                        <CardContent>
+                                <Typography color="textSecondary" gutterBottom>
+                                        Task #1
+                                </Typography>
+                                <Typography variant="body2" component="p">
+                                        Task Description
+                                </Typography>
+                        </CardContent>
+                        <CardActions>
+                                <Button size="small" variant="contained">Done!</Button>
+                        </CardActions>
+                </Card>
+            );
+
+        return (
+            <PageLayout>
+                    <Task/>
+                    <Task/>
+                    <Task/>
+            </PageLayout>
 
 
-);
+        );
+}
 
 export default MyTasks;
