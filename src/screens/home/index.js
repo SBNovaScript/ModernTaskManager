@@ -1,9 +1,23 @@
-import React, {Fragment} from "react";
-import {Paper, Toolbar, IconButton, AppBar, Typography, Grid, makeStyles} from "@material-ui/core";
+import React, {Fragment, useState} from "react";
+import {
+    Toolbar,
+    IconButton,
+    AppBar,
+    Typography,
+    Grid,
+    makeStyles,
+    ListItemIcon,
+    Drawer,
+    ListItemText
+} from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
+import {BrowserRouter, Route} from "react-router-dom";
 import MyTasks from "../my-tasks";
-import PageLayout from "../../components/PageLayout";
-import TaskCard from "../../components/TaskCard";
+import About from "../about";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import InfoIcon from '@material-ui/icons/Info';
+import {Link} from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
 
@@ -17,15 +31,38 @@ const useStyles = makeStyles(theme => ({
 
 const Home = () => {
     const classes = useStyles();
+    const [drawerOpen, setDrawerOpen] = useState(false);
+    const toggleDrawerOpen = () => setDrawerOpen(!drawerOpen);
+
+    const MenuDrawer = () =>
+        (
+            <div
+                role={'presentation'}
+                onClick={toggleDrawerOpen}
+                >
+                <List>
+                    <ListItem component={Link} to={'/about'}>
+                        <ListItemIcon>
+                            <InfoIcon/>
+                        </ListItemIcon>
+                        <ListItemText primary={'About'}/>
+                    </ListItem>
+                </List>
+            </div>
+        );
 
     const Header = () =>
         (
             <Fragment>
+                <Drawer open={drawerOpen} onClose={toggleDrawerOpen}>
+                    <MenuDrawer/>
+                </Drawer>
                 <AppBar position={'static'} className={classes.header}>
                     <Toolbar className={classes.toolbar}>
                         <IconButton
                             color={'inherit'}
                             edge={'start'}
+                            onClick={toggleDrawerOpen}
                         >
                             <MenuIcon />
                         </IconButton>
@@ -37,29 +74,12 @@ const Home = () => {
             </Fragment>
         );
 
-    const Body = () =>
-        (
-            <PageLayout>
-                <TaskCard>
-                    <Typography variant={'h2'} align={'center'} color={'textPrimary'} gutterBottom>
-                        {'My Tasks:'}
-                    </Typography>
-                </TaskCard>
-                <TaskCard>
-                    <Typography variant={'subtitle1'}>
-                        {'Font!'}
-                    </Typography>
-                </TaskCard>
-            </PageLayout>
-        );
-
-
-
     return (
-        <Fragment>
+        <BrowserRouter>
             <Header/>
-            <MyTasks/>
-        </Fragment>
+            <Route exact path={'/'} component={MyTasks}/>
+            <Route path={'/about'} component={About}/>
+        </BrowserRouter>
 
     );
 };
