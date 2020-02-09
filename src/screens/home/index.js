@@ -4,7 +4,6 @@ import {
     IconButton,
     AppBar,
     Typography,
-    Grid,
     makeStyles,
     ListItemIcon,
     Drawer,
@@ -18,6 +17,10 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import InfoIcon from '@material-ui/icons/Info';
 import {Link} from "react-router-dom";
+import Divider from "@material-ui/core/Divider";
+import AccountTreeIcon from '@material-ui/icons/AccountTree';
+import AddCommentIcon from '@material-ui/icons/AddComment';
+import AddTask from "../add-task";
 
 const useStyles = makeStyles(theme => ({
 
@@ -34,6 +37,15 @@ const Home = () => {
     const [drawerOpen, setDrawerOpen] = useState(false);
     const toggleDrawerOpen = () => setDrawerOpen(!drawerOpen);
 
+    const MenuLink = ({to, icon, text}) => (
+        <ListItem button component={Link} to={to}>
+            <ListItemIcon>
+                {icon}
+            </ListItemIcon>
+            <ListItemText primary={text}/>
+        </ListItem>
+    );
+
     const MenuDrawer = () =>
         (
             <div
@@ -41,12 +53,12 @@ const Home = () => {
                 onClick={toggleDrawerOpen}
                 >
                 <List>
-                    <ListItem component={Link} to={'/about'}>
-                        <ListItemIcon>
-                            <InfoIcon/>
-                        </ListItemIcon>
-                        <ListItemText primary={'About'}/>
-                    </ListItem>
+                    <MenuLink to={'/'} icon={<AccountTreeIcon/>} text={'My Tasks'}/>
+                    <MenuLink to={'/add-task'} icon={<AddCommentIcon/>} text={'Add Task'}/>
+                    <Divider/>
+                    <MenuLink to={'/about'} icon={<InfoIcon/>} text={'About'}/>
+
+
                 </List>
             </div>
         );
@@ -79,6 +91,7 @@ const Home = () => {
             <Header/>
             <Route exact path={'/'} component={MyTasks}/>
             <Route path={'/about'} component={About}/>
+            <Route path={'/add-task'} component={AddTask}/>
         </BrowserRouter>
 
     );
