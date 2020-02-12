@@ -7,10 +7,15 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import {Link} from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
+import {connect} from "react-redux";
 
-const MyTasks = () => {
+const mapStateToProps = state => ({
+    todos: state.todos
+});
 
-    const [tasks, setTasks] = useState(null);
+const MyTasks = state => {
+
+    const todos = state.todos;
 
         const Task = ({title, description}) =>
             (
@@ -31,20 +36,20 @@ const MyTasks = () => {
 
         const ListOfTasks = () => {
             return (
-                <Fragment>
+                <PageLayout>
                     {
-                        tasks.map((task) =>
+                        todos.map((task) =>
                             <Task title={task.title} description={task.description}/>
                         )
                     }
-                </Fragment>
+                </PageLayout>
 
             )
         };
 
         const NoTasksFound = () => (
             <Fragment>
-                <Grid container justify={'center'}>
+                <Grid container justify={'center'} spacing={2}>
                     <Grid container item xs={12} justify={'center'}>
                         <Typography variant={'h2'}>
                             {'No Tasks!'}
@@ -61,11 +66,11 @@ const MyTasks = () => {
 
         return (
             <PageLayout>
-                {tasks !== null ? <ListOfTasks/> : <NoTasksFound/>}
+                {todos.length !== 0 ? <ListOfTasks/> : <NoTasksFound/>}
             </PageLayout>
 
 
         );
 };
 
-export default MyTasks;
+export default connect(mapStateToProps)(MyTasks);
