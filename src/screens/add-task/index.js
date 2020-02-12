@@ -7,9 +7,6 @@ import Grid from "@material-ui/core/Grid";
 import Input from "@material-ui/core/Input";
 
 const AddTask = () => {
-    function newTask(e){
-
-    }
     return (
         <PageLayout>
 
@@ -20,7 +17,7 @@ const AddTask = () => {
 
                 <Grid container item xs={12} justify={'center'}>
                     <form titleForm autoComplete="off">
-                        <Input variant={'outlined'} placeholder="Title " inputProps={{ 'aria-label': 'description' }} />
+                        <Input variant={'outlined'} placeholder="Title " inputProps={{ 'aria-label': 'title' }} />
                     </form>
                 </Grid>
 
@@ -30,7 +27,7 @@ const AddTask = () => {
                     </form>
                 </Grid>
                 <Grid container item xs={12} justify={'center'}>
-                    <Button component={Link} variant={'outlined'}>
+                    <Button component={'button'} variant={'outlined'}>
                         {'Create'}
                     </Button>
                 </Grid>
